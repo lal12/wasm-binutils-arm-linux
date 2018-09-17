@@ -1,0 +1,22 @@
+{
+  "name": "wasm-binutils-arm-linux",
+  "version": "0.0.1",
+  "description": "binutils for arm-linux compiled as wasm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no test command defined!\" && false"
+  },
+  "keywords": [
+    "wasm",
+    "binutils",
+    "strip",
+    "readelf",
+    "objdump",
+    "ar",
+    "arm",
+    "linux",
+    "arm-linux"
+  ],
+  "author": "Luca Lindhorst <info@lucalindhorst>",
+  "license": "MIT"
+}
