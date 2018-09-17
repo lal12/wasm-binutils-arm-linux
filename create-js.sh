@@ -8,7 +8,7 @@ function createWasm(){
     filename=$(basename $file)
     cp $file $filename.bc
     expname=$2
-    emcc $filename.bc -O3 -g3 -s FORCE_FILESYSTEM=1 -s MODULARIZE=1 \
+    emcc $filename.bc -O3 -g0 -s FORCE_FILESYSTEM=1 -s MODULARIZE=1 \
          -o $expname.js --post-js post-js.txt
     rm $filename.bc
     echo $expname.js
