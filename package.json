@@ -4,7 +4,8 @@
   "description": "binutils for arm-linux compiled as wasm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"no test command defined!\" && false"
+    "test": "echo \"no test command defined!\" && false",
+    "prepublishOnly": "./install-emscripten.sh && ./build-binutils.sh && ./create-js.sh"
   },
   "keywords": [
     "wasm",
@@ -18,5 +19,16 @@
     "arm-linux"
   ],
   "author": "Luca Lindhorst <info@lucalindhorst>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lal12/wasm-binutils-arm-linux"
+  },
+  "files": [
+    "dist/*",
+    "index.d.ts"
+  ]
 }

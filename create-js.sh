@@ -1,10 +1,7 @@
 #!/bin/bash
 
-if [ ! -d "root" ]
-then
-    echo "run build-binutils.sh first!"
-    exit 1
-fi
+./build-binutils.sh
+source emsdk/emsdk_env.sh
 
 function createWasm(){
     file=$(realpath $1)
@@ -14,7 +11,6 @@ function createWasm(){
     emcc $filename.bc -O3 -g3 -s FORCE_FILESYSTEM=1 -s MODULARIZE=1 \
          -o $expname.js --post-js post-js.txt
     rm $filename.bc
-    #echo "var exports = module.exports = { $expname: Module };" >> $expname.js
     echo $expname.js
 }
 
@@ -27,4 +23,3 @@ echo "Module['FS'] = FS;" > post-js.txt
 createWasm "../root/usr/local/arm-linux/bin/strip" "strip"
 
 rm post-js.txt
-cd ..

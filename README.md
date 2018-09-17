@@ -4,7 +4,6 @@ This package includes binutils programs for arm-linux. It is compiled to wasm wh
 
 ## Usage
 
-Every program can be loaded by
 Currently the following programs can be used:
 
 ### strip
@@ -17,5 +16,5 @@ Currently the following programs can be used:
 
 ## Future
 
-- Implement more binutils programs
+- Implement more binutils programs: Actually not hard, just needs some tidious boilerplate code... 
 - Make it compatible for browser usage

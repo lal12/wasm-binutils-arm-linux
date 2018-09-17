@@ -8,4 +8,3 @@ then
     ./emsdk activate latest
     cd ..
 fi
-source emsdk/emsdk_env.sh
