@@ -18,24 +18,24 @@ async function stripWrap(files,opts){
     }
     if(opts && !Array.isArray(opts))
         throw new Error("strip expects param 1 to be an argument");
-    return new Promise((res,rej)=>{
-        let env = {};
+    let env = {};
+    let args = opts || [];
+    args = args.concat(files.map((v,i)=>"/f_"+i));
+    let prog;
+    env.arguments = args;
+    let datas = [];
+    env.preRun = [
+        function(){
+            let count = 0;
+            for(let f in files){
+                prog.FS.writeFile("/f_"+f, files[f]);
+            }
+        }
+    ];  
+    await new Promise((res,rej)=>{
         env.quit = (code,err)=>{
             rej(err);
         };
-        let args = opts || [];
-        args = args.concat(files.map((v,i)=>"/f_"+i));
-        let prog;
-        env.arguments = args;
-        let datas = [];
-        env.preRun = [
-            function(){
-                let count = 0;
-                for(let f in files){
-                    prog.FS.writeFile("/f_"+f, files[f]);
-                }
-            }
-        ];
         env.postRun = [
             function(){
                 let filesOut = [];
@@ -45,12 +45,8 @@ async function stripWrap(files,opts){
                 res(filesOut);
             }
         ];
-        try{
-            prog = strip(env);
-        }catch(e){
-            rej(e);
-        }
-    })
+        prog = strip(env);
+    });
 }
 
 var exports = module.exports = {

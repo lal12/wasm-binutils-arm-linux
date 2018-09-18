@@ -4,6 +4,7 @@ This package includes binutils programs for arm-linux. It is compiled to wasm wh
 
 ## Usage
 
+It is recommend to run the functions only inside a child_process, since the underlying emscripten has some shortcomings...
 Currently the following programs can be used:
 
 ### strip
