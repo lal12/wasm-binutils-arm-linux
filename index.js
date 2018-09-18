@@ -8,9 +8,9 @@ async function stripWrap(files,opts){
     if(!files || !Array.isArray(files) || files.length < 1)
         throw new Error("strip expects param 1 to be a non empty array!");
     for(let f in files){
-        if(typeof f == "string"){
+        if(typeof files[f] == "string"){
             files[f] = await NUtil.promisify(NFS.readFile)(files[f]);
-        }else if(Buffer.isBuffer(f)){
+        }else if(Buffer.isBuffer(files[f])){
             files[f] = f;
         }else{
             throw new Error("strip expects param 1 to be an array of strings and buffers!");
@@ -50,7 +50,6 @@ async function stripWrap(files,opts){
         }catch(e){
             rej(e);
         }
-        //res(filesOut);
     })
 }
 
