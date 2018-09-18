@@ -33,16 +33,20 @@ async function stripWrap(files,opts){
         }
     ];  
     await new Promise((res,rej)=>{
+        let error = false;
         env.quit = (code,err)=>{
+            error = true;
             rej(err);
         };
         env.postRun = [
             function(){
-                let filesOut = [];
-                for(let f in files){
-                    filesOut[f] = prog.FS.readFile("/f_"+f);
-                }
-                res(filesOut);
+                if(!error){
+                    let filesOut = [];
+                    for(let f in files){
+                        filesOut[f] = prog.FS.readFile("/f_"+f);
+                    }
+                    res(filesOut);
+                }   
             }
         ];
         prog = strip(env);
