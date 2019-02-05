@@ -32,7 +32,7 @@ async function stripWrap(files,opts){
             }
         }
     ];  
-    await new Promise((res,rej)=>{
+    return await new Promise((res,rej)=>{
         let error = false;
         env.quit = (code,err)=>{
             error = true;
@@ -43,16 +43,18 @@ async function stripWrap(files,opts){
                 if(!error){
                     let filesOut = [];
                     for(let f in files){
-                        filesOut[f] = prog.FS.readFile("/f_"+f);
+                        filesOut[f] = Buffer.from(prog.FS.readFile("/f_"+f));
                     }
                     res(filesOut);
-                }   
+                }else{
+                    rej(error)
+                }
             }
         ];
         prog = strip(env);
     });
 }
 
-var exports = module.exports = {
+exports = module.exports = {
     strip: stripWrap
 }

@@ -21,7 +21,7 @@
   "author": "Luca Lindhorst <info@lucalindhorst>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^10.10.1"
+    "@types/node": "^10.12.21"
   },
   "repository": {
     "type": "git",
