@@ -1,6 +1,6 @@
 {
   "name": "wasm-binutils-arm-linux",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "binutils for arm-linux compiled as wasm",
   "main": "index.js",
   "scripts": {

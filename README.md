@@ -19,5 +19,5 @@ A Promise is returned by strip, it will either give you back an array of buffers
 
 ## Future
 
-- Implement more binutils programs: Actually not hard, just needs some tidious boilerplate code... 
+- Implement more binutils programs: Actually not hard, just needs some tidious boilerplate code...
 - Make it compatible for browser usage
